@@ -6,7 +6,9 @@ class SolutionL2P1
 {
     public int[] solution(int[] A, int K)
     {
-        if (A.Length == K ||
+        if (A.Length == 0 ||
+            A.Length == K ||
+            K == 0 ||
             A.Skip(1).All(s => Equals(A[0], s)))
         {
             return A;
@@ -27,18 +29,13 @@ class SolutionL2P1
                     {
                         resultArray[0] = A[A.Length - 1];
                     }
-
-                    for (int k = 0; k < A.Length; k++)
-                    {
-                        Console.Write(resultArray[k] + " ");
-                    }
-
-                    Console.WriteLine(" Internal Iteration ends ");
                 }
 
-                A = resultArray;
+                for (int k = 0; k < A.Length; k++)
+                {
+                    A[k] = resultArray[k];
+                }
 
-                Console.WriteLine(" Extrernal Iteration ends ");
             }
 
             return resultArray;
